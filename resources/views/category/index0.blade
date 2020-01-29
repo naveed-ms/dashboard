@@ -1,0 +1,117 @@
+@extends('layouts.app')
+@section('content')
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+          <div class="panel panel-default">
+              <div class="panel-heading"></div>
+              <div class="panel-body">
+
+              </div>
+              <div class="panel-footer"></div>
+            </div>
+          </div>
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">Category <span id="jobId"></span> <a href="{{ url('/encoder/movie') }}" class="btn btn-primary">Add New</a></div>
+                <div class="panel-body">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <script type="text/babel">
+
+        var Form = React.createClass({
+          getInitialState:function(){
+            return {"message":""};
+          },
+          handleState:function(evt){
+            this.setState({"message":evt.target.value});
+          },
+          handleState2:function(evt){
+            this.setState({"message2":evt.target.value});
+          },
+          render: function() {
+            return (
+              <div>
+                <div className="col-lg-12">
+                  <input type="text" className="form-control" placeholder="Name" value={this.state.message} onChange={this.handleState}/>
+                </div>
+              </div>
+            );
+          }
+        });
+
+
+        ReactDOM.render(
+          <Form />,
+          document.getElementsByClassName('panel-body')[1]
+        );
+
+
+
+        var TodoApp = React.createClass({
+          getInitialState: function() {
+            return {items: [], text: ''};
+          },
+          render: function() {
+            return (
+              <div>
+                <LopMonHoc />
+              </div>
+            );
+          }
+        });
+
+        var LopMonHoc = React.createClass({
+         	getInitialState: function(){
+         		return {data: []}
+         	},
+         	componentDidMount: function(){
+         		var self = this;
+         		$('#mytable').dataTable({
+        		  "bAutoWidth": false,
+        		  "bDestroy": true,
+        		  "fnDrawCallback": function() {
+                    	self.forceUpdate();
+                  },
+        		});
+         	},
+         	componentDidUpdate: function(){
+         		$('#mytable').dataTable({
+        		  "bAutoWidth": false,
+        		  "bDestroy": true,
+        		});
+         	},
+         	render: function(){
+         		var x = [];
+
+                x.push(
+                    <tr><td>Category</td><td>category</td></tr>
+                )
+
+        		return (
+        			<div class="table-responsive">
+        				<table class="table table-bordered" id="mytable">
+        					<thead>
+        						<tr class="success">
+        							<td>Nmae</td>
+        							<td>Slug</td>
+        						</tr>
+        					</thead>
+        					<tbody>
+        						{x}
+        					</tbody>
+        				</table>
+        			</div>
+        		)
+         	}
+         });
+
+        ReactDOM.render(<TodoApp />, document.getElementsByClassName('panel-body')[0]);
+
+
+        </script>
+@endsection

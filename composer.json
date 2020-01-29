@@ -1,0 +1,43 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "require": {
+        "php": ">=5.5.9",
+        "laravel/framework": "5.2.*",
+        "bitmovin/bitcodin-php": "^1.14",
+        "laravelcollective/html": "~5.0",
+        "maatwebsite/excel": "~2.1.0",
+        "aws/aws-sdk-php-laravel": "^3.1",
+        "league/flysystem-aws-s3-v3": "^1.0",
+        "superbalist/flysystem-google-storage": "^1.0",
+        "zizaco/entrust": "5.2.x-dev",
+        "spatie/activitylog": "^2.4",
+        "cviebrock/laravel-elasticsearch": "^1.2"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~4.0",
+        "symfony/css-selector": "2.8.*|3.0.*",
+        "symfony/dom-crawler": "2.8.*|3.0.*"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "classmap": [
+            "tests/TestCase.php"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist"
+    }
+}
